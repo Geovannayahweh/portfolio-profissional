@@ -1,0 +1,170 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Paleta "Rosé & Plum" — quente, elegante, feminina
+   ============================================================ */
+:root {
+  --bg: #fffaf8;
+  --bg-alt: #fdf2ef;
+  --bg-deep: #fbe9e7;
+
+  --surface: #ffffff;
+  --surface-soft: #fff6f4;
+
+  --ink: #3b2a31;
+  --ink-soft: #6f5a62;
+  --ink-mute: #9b8189;
+
+  --rose: #c75f86;
+  --rose-light: #e795b1;
+  --plum: #8e5a8f;
+  --lilac: #b189c9;
+  --gold: #c9a063;
+  --gold-soft: #e6cba0;
+
+  --line: #f0d9d4;
+  --line-strong: #e5c2bd;
+
+  --shadow-sm: 0 2px 12px -4px rgb(140 74 100 / 0.14);
+  --shadow-md: 0 12px 32px -12px rgb(140 74 100 / 0.22);
+  --shadow-lg: 0 28px 60px -24px rgb(140 74 100 / 0.32);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-alt: var(--bg-alt);
+  --color-bg-deep: var(--bg-deep);
+  --color-surface: var(--surface);
+  --color-surface-soft: var(--surface-soft);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-mute: var(--ink-mute);
+  --color-rose: var(--rose);
+  --color-rose-light: var(--rose-light);
+  --color-plum: var(--plum);
+  --color-lilac: var(--lilac);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-playfair), Georgia, "Times New Roman", serif;
+}
+
+* {
+  border-color: var(--line);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--rose-light);
+  color: #fff;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-alt);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--rose-light), var(--lilac));
+  border-radius: 999px;
+  border: 2px solid var(--bg-alt);
+}
+
+/* ============================================================
+   Utilitários
+   ============================================================ */
+.font-display {
+  font-family: var(--font-playfair), Georgia, serif;
+}
+
+.gradient-text {
+  background: linear-gradient(100deg, var(--rose) 0%, var(--plum) 55%, var(--lilac) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.section {
+  padding-block: 5rem;
+  position: relative;
+}
+@media (min-width: 768px) {
+  .section {
+    padding-block: 7rem;
+  }
+}
+
+.container-x {
+  width: 100%;
+  max-width: 1140px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+@media (min-width: 768px) {
+  .container-x {
+    padding-inline: 2rem;
+  }
+}
+
+.card {
+  background: linear-gradient(160deg, var(--surface) 0%, var(--surface-soft) 100%);
+  border: 1px solid var(--line);
+  border-radius: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease, border-color 0.35s ease;
+}
+.card:hover {
+  transform: translateY(-6px);
+  border-color: var(--line-strong);
+  box-shadow: var(--shadow-md);
+}
+
+/* Moldura decorativa em gradiente */
+.frame-gradient {
+  background: conic-gradient(
+    from 140deg,
+    var(--rose-light),
+    var(--lilac),
+    var(--gold-soft),
+    var(--rose-light)
+  );
+}
+
+/* Brilho de fundo */
+.glow {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) }
+  50% { transform: translateY(-14px) }
+}
+.animate-float {
+  animation: float-slow 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .animate-float { animation: none; }
+}
